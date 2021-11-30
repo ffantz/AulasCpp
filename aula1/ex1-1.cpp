@@ -12,7 +12,7 @@ int main() {
     ifstream arquivo("arquivo");
 
     while (getline (arquivo, linhaArquivo)) {
-        for (int i = 0; (i = linhaArquivo.find(espaco, i)) != std::string::npos; i++){
+        for (int i = 0; (i = linhaArquivo.find(espaco, i)) != string::npos; i++){
             contador++;
         }
     }
