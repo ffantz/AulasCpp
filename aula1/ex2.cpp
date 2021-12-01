@@ -3,7 +3,7 @@
 using namespace std;
 
 typedef struct{
-    double** m;
+    double **m;
     int nLinhas;
     int nColunas;
 } Matriz;
@@ -15,7 +15,7 @@ void inicializaMatriz(Matriz &X, int ls, int cs){
     for (int i = 0; i < ls; i++) {
         X.m[i] = new double [cs];
         for (int j = 0; j < cs; j++) {
-            X.m[i][j] = 0.0;
+            X.m[i][j] = i + j;
         }
     }
 }
@@ -43,10 +43,12 @@ void transposta(Matriz &X){
 
 Matriz multiplica_por_cte(Matriz &X, double k){
     Matriz multiplicada;
-    inicializaMatriz(multiplicada, X.nColunas, X.nLinhas);
+    // Matriz multiplicada = X;
+    inicializaMatriz(multiplicada, X.nLinhas, X.nColunas);
     for(int i = 0; i < X.nLinhas; i++){
         for(int j = 0; j < X.nColunas; j++){
             multiplicada.m[i][j] = X.m[i][j] * k;
+            // multiplicada.m[i][j] *= k;
         }
     };
 
@@ -60,7 +62,7 @@ void imprimeMatriz(Matriz &X){
     cout << "Numero de colunas: " << X.nColunas << endl;
     for(int i = 0; i < X.nLinhas; i++) {
         for(int j = 0; j < X.nColunas; j++) {
-            cout << X.m[i][j] << " ";
+            cout << "[" << X.m[i][j] << "] ";
         }
         cout << endl;
     };

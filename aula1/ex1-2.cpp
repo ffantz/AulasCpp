@@ -1,12 +1,11 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 
 using namespace std;
 
 int main() {
-    std::vector<int> vetorOriginal (0);
-    std::vector<int> vetorSaida;
+    vector<int> vetorOriginal;
+    vector<int> vetorSaida;
     int entrada, contador = 0;
     int numeroRepetido;
 

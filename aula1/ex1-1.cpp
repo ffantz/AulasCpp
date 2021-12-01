@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    int contador;
+    int contador = 0;
     char espaco = ' ';
     string linhaArquivo;
 
