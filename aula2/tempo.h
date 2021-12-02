@@ -1,24 +1,25 @@
 class Tempo {
     private:
-        int dias;
-        int horas;
-        int minutos;
-        int segundos;
+        int dia;
+        int hora;
+        int minuto;
+        int segundo;
     public:
         // Construtores
-        Tempo(int dias, int horas, int minutos, int segundos);
+        Tempo();
+        Tempo(int dia, int hora = 0, int minuto = 0, int segundo = 0);
         // destrutor
         ~Tempo();
         // basic getters
-        int getDias() const;
-        int getHoras() const;
-        int getMinutos() const;
-        int getSegundos() const;
+        int getDia() const;
+        int getHora() const;
+        int getMinuto() const;
+        int getSegundo() const;
 
-        void setDias(int valor);
-        void setHoras(int valor);
-        void setMinutos(int valor);
-        void setSegundos(int valor);
+        void setDia(int valor);
+        void setHora(int valor);
+        void setMinuto(int valor);
+        void setSegundo(int valor);
         // other methods
         void checarConsistencia();
         Tempo somarTempos(Tempo a, Tempo b);
