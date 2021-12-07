@@ -54,7 +54,7 @@ void Tempo::setSegundo(int valor) {
 
 void Tempo::checarConsistencia() {
     int aux = 0;
-    if (this->segundo % 60 > 0) {
+    if (this->segundo > 60 && this->segundo % 60 > 0) {
         this->segundo = this->segundo - 60;
         this->minuto++;
     } else if (this->segundo == 60) {
@@ -62,7 +62,7 @@ void Tempo::checarConsistencia() {
         this->minuto++;
     }
 
-    if (this->minuto % 60 > 0) {
+    if (this->minuto > 60 && this->minuto % 60 > 0) {
         this->minuto = this->minuto - 60;
         this->hora++;
     } else if (this->minuto == 60) {
@@ -70,11 +70,10 @@ void Tempo::checarConsistencia() {
         this->hora++;
     }
 
-    if (this->hora % 24 > 0) {
+    if (this->hora > 24 && this->hora % 24 > 0) {
         this->hora = this->hora - 24;
         this->dia++;
     } else if (this->hora == 24) {
-        std::cout << "entrou wtf " << this->hora << std::endl;
         this->hora = 0;
         this->dia++;
     }
