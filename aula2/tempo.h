@@ -23,5 +23,6 @@ class Tempo {
         // other methods
         void checarConsistencia();
         Tempo somarTempos(Tempo a, Tempo b);
+        Tempo incrementaSegundo(Tempo a);
         void print() const;
 };

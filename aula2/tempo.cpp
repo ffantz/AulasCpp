@@ -7,6 +7,7 @@ Tempo::Tempo() {
     this->minuto = 0;
     this->segundo = 0;
 }
+
 Tempo::Tempo(int dia, int hora, int minuto, int segundo) {
     this->dia = dia;
     this->hora = hora;
@@ -38,28 +39,45 @@ int Tempo::getSegundo() const {
 
 void Tempo::setDia(int valor) {
     this->dia = valor;
+    this->checarConsistencia();
 }
 
 void Tempo::setHora(int valor) {
     this->hora = valor;
+    this->checarConsistencia();
 }
 
 void Tempo::setMinuto(int valor) {
     this->minuto = valor;
+    this->checarConsistencia();
 }
 
 void Tempo::setSegundo(int valor) {
     this->segundo = valor;
+    this->checarConsistencia();
 }
 
 void Tempo::checarConsistencia() {
     int aux = 0;
+    if (this->segundo >= 60 && this->segundo / 60 > 0) {
+        aux = this->segundo / 60;
+        this->minuto += aux;
+        this->segundo -= (60 * aux);
+    }
+
     if (this->segundo > 60 && this->segundo % 60 > 0) {
         this->segundo = this->segundo - 60;
         this->minuto++;
     } else if (this->segundo == 60) {
         this->segundo = 0;
         this->minuto++;
+    }
+
+    aux = 0;
+    if (this->minuto >= 60 && this->minuto / 60 > 0) {
+        aux = this->minuto / 60;
+        this->hora += aux;
+        this->minuto -= (60 * aux);
     }
 
     if (this->minuto > 60 && this->minuto % 60 > 0) {
@@ -70,6 +88,12 @@ void Tempo::checarConsistencia() {
         this->hora++;
     }
 
+    aux = 0;
+    if (this->hora >= 24 && this->hora / 24 > 0) {
+        aux = this->hora / 24;
+        this->dia += aux;
+        this->hora -= (24 * aux);
+    }
     if (this->hora > 24 && this->hora % 24 > 0) {
         this->hora = this->hora - 24;
         this->dia++;
@@ -80,10 +104,16 @@ void Tempo::checarConsistencia() {
 }
 
 Tempo Tempo::somarTempos(Tempo a, Tempo b) {
-    a.dia = b.dia;
-    a.hora = b.hora;
-    a.minuto = b.minuto;
-    a.segundo = b.segundo;
+    a.dia += b.dia;
+    a.hora += b.hora;
+    a.minuto += b.minuto;
+    a.segundo += b.segundo;
+    a.checarConsistencia();
+    return a;
+}
+
+Tempo Tempo::incrementaSegundo(Tempo a) {
+    a.segundo++;
     a.checarConsistencia();
     return a;
 }

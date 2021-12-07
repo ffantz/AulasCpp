@@ -27,6 +27,7 @@ Matrix::Matrix(int rows, int cols, double elem){
 
 // destrutor
 Matrix::~Matrix() {
+    cout << "destrutor" << endl;
     delete this->m;
 }
 
@@ -34,10 +35,12 @@ Matrix::~Matrix() {
 int Matrix::getRows() const {
     return this->nRows;
 }
+
 // obtem o numero de colunas
 int Matrix::getCols() const {
     return this->nCols;
 }
+
 // retorna uma matriz transposta
 Matrix Matrix::transpose() {
     Matrix transposta(this->nCols, this->nRows, 0);
@@ -49,6 +52,7 @@ Matrix Matrix::transpose() {
 
     return transposta;
 }
+
 // imprime o conteudo da matriz
 void Matrix::print() const {
     cout << "Numero de linhas: " << this->nRows << endl;
